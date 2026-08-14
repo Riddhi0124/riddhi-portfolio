@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Riddhi Patel — Software Engineer</title>
+<meta name="description" content="Riddhi Patel — Computer Science student at Purdue University Fort Wayne. Full-stack, AI/ML, and security engineering. SWE Intern at Hadrian." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F4F1E9;
+    --paper-alt:#EAE4D6;
+    --ink:#18160F;
+    --muted:#6E675B;
+    --line:#D9D2C4;
+    --accent:#33406B;
+    --accent-soft:#33406B1a;
+    /* dark projects band */
+    --dark:#0c0d14;
+    --dark-2:#14161f;
+    --dark-line:#262a38;
+    --dark-txt:#e9eaf0;
+    --dark-muted:#9b9fb2;
+    --glow:#8b93ff;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter Tight",system-ui,sans-serif;
+    --mono:"Space Mono",ui-monospace,monospace;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .serif{font-family:var(--serif)}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(244,241,233,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.1}
+  .brand b{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:-.01em}
+  .brand span{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-top:2px}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:14.5px;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .clock{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .nav-cta{font-family:var(--sans);font-size:14px;background:var(--ink);color:var(--paper);padding:9px 18px;border-radius:2px;transition:background .2s}
+  .nav-cta:hover{background:var(--accent)}
+  .menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:60}
+  .menu-btn span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s,opacity .3s}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-btn.open span:nth-child(2){opacity:0}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:900px){
+    .clock{display:none}
+    .menu-btn{display:flex}
+    .nav-links{
+      position:fixed;inset:0 0 0 auto;width:min(78vw,320px);
+      flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;
+      background:var(--paper);border-left:1px solid var(--line);
+      padding:0 40px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+      box-shadow:-20px 0 60px -30px rgba(24,22,15,.4);
+    }
+    .nav-links.open{transform:translateX(0)}
+    .nav-links a{font-size:20px;font-family:var(--serif);color:var(--ink)}
+    .nav-links .nav-cta{font-family:var(--sans);font-size:15px;color:var(--paper)}
+  }
+
+  /* ---------- HERO ---------- */
+  header{padding:96px 0 72px}
+  .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+  .hero-eyebrow .rule{height:1px;width:64px;background:var(--line)}
+  h1.hero{font-family:var(--serif);font-weight:600;font-size:clamp(52px,9vw,116px);line-height:.94;letter-spacing:-.03em;margin-bottom:32px}
+  h1.hero em{font-style:italic;font-weight:400;color:var(--accent)}
+  .hero-sub{max-width:620px;font-size:20px;color:#413c33;line-height:1.55;margin-bottom:44px}
+  .hero-sub b{font-weight:600;color:var(--ink)}
+  .stats{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line)}
+  .stat{padding:22px 40px 22px 0;margin-right:40px;border-right:1px solid var(--line);flex:0 0 auto}
+  .stat:last-child{border-right:none}
+  .stat .num{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1;letter-spacing:-.02em}
+  .stat .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  @media(max-width:620px){.stat{padding-right:22px;margin-right:22px}.stat .num{font-size:26px}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+  h2.sec{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,46px);letter-spacing:-.02em;line-height:1.05}
+  .sec-head .eyebrow{margin-bottom:10px;display:block}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px}
+  .about-grid p{font-size:19px;line-height:1.7;color:#3a352c;margin-bottom:20px}
+  .about-grid p b{color:var(--ink);font-weight:600}
+  .about-side .meta-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);gap:16px}
+  .about-side .meta-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .about-side .meta-row .v{font-size:15px;text-align:right;font-weight:500}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:40px}}
+
+  /* ---------- EXPERIENCE / EDUCATION ---------- */
+  .exp-item{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:38px 0;border-top:1px solid var(--line)}
+  .exp-item:first-of-type{border-top:none}
+  .exp-left{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .logo-badge{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);flex:0 0 auto;overflow:hidden;box-shadow:0 1px 0 var(--line)}
+  .logo-badge svg{width:100%;height:100%}
+  .exp-date{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .exp-role{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
+  .exp-co{font-size:15px;color:var(--accent);font-weight:600;margin-bottom:18px}
+  .exp-co .place{color:var(--muted);font-weight:400}
+  .exp-body li{list-style:none;position:relative;padding-left:22px;margin-bottom:12px;color:#3a352c;font-size:16px;line-height:1.6}
+  .exp-body li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .edu-gpa{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+  @media(max-width:720px){.exp-item{grid-template-columns:1fr;gap:18px}.exp-left{flex-direction:row;align-items:center;gap:18px}}
+
+  /* ---------- PROJECTS (DARK BAND) ---------- */
+  #projects{background:var(--dark);color:var(--dark-txt);border-top:1px solid var(--dark-line);position:relative;overflow:hidden}
+  #projects .eyebrow{color:var(--glow)}
+  #projects h2.sec{color:#fff}
+  #projects .gh-link{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dark-muted);border:1px solid var(--dark-line);border-radius:999px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,color .2s}
+  #projects .gh-link:hover{border-color:var(--glow);color:#fff}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .proj{position:relative;border:1px solid var(--dark-line);border-radius:16px;background:var(--dark-2);overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column;min-height:340px}
+  .proj::before{content:"";position:absolute;inset:0;border-radius:16px;opacity:0;transition:opacity .3s;background:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(139,147,255,.16),transparent 60%);z-index:2;pointer-events:none}
+  .proj:hover{transform:translateY(-4px);border-color:#3b4160}
+  .proj:hover::before{opacity:1}
+  .proj .reticle{position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(233,234,240,.35);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s;z-index:4}
+  .proj .reticle::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--glow);box-shadow:0 0 8px var(--glow)}
+  .proj:hover .reticle{opacity:1;transform:scale(1)}
+  .proj-cover{height:150px;position:relative;overflow:hidden;border-bottom:1px solid var(--dark-line)}
+  .proj-cover svg{width:100%;height:100%}
+  .proj-year{position:absolute;bottom:10px;right:14px;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7);z-index:3}
+  .proj-tag-cat{position:absolute;bottom:10px;left:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(139,147,255,.28);border:1px solid rgba(139,147,255,.4);border-radius:999px;padding:4px 10px;z-index:3}
+  .proj-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1;position:relative;z-index:3}
+  .proj h3{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:9px;color:#fff}
+  .proj p{font-size:14.5px;color:var(--dark-muted);line-height:1.55;flex:1}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dark-muted);border:1px solid var(--dark-line);border-radius:999px;padding:4px 10px;text-transform:uppercase}
+  .proj-links{display:flex;gap:16px;margin-top:16px;position:relative;z-index:5}
+  .proj-links a{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dark-txt);border-bottom:1px solid var(--dark-line);padding-bottom:2px;transition:color .2s,border-color .2s}
+  .proj-links a:hover{color:var(--glow);border-color:var(--glow)}
+  .proj-cover-link{display:block;position:relative}
+  @media(max-width:900px){.proj-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.proj-grid{grid-template-columns:1fr}}
+
+  /* ---------- SKILLS ---------- */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .skill-card{border:1px solid var(--line);border-radius:4px;padding:26px}
+  .skill-card h4{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13.5px;background:var(--paper-alt);border:1px solid var(--line);padding:6px 13px;border-radius:3px;transition:background .2s}
+  .chip:hover{background:var(--accent-soft)}
+  @media(max-width:820px){.skill-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.skill-grid{grid-template-columns:1fr}}
+
+  /* ---------- CERTS ---------- */
+  .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+  .cert{display:grid;grid-template-columns:1fr auto;gap:16px;padding:20px 0;border-top:1px solid var(--line);align-items:baseline}
+  .cert .c-name{font-family:var(--serif);font-size:18px;font-weight:600}
+  .cert .c-org{font-size:14px;color:var(--muted);margin-top:3px}
+  .cert .c-date{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+  @media(max-width:720px){.cert-grid{grid-template-columns:1fr}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;background:var(--paper-alt)}
+  .marquee-track{display:flex;white-space:nowrap;gap:32px;animation:scroll 32s linear infinite;font-family:var(--serif);font-size:clamp(18px,3vw,30px);font-weight:600;letter-spacing:-.01em}
+  .marquee-track span{opacity:.85}
+  .marquee-track .dot{color:var(--accent)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+  /* ---------- CONTACT ---------- */
+  #contact{padding-top:80px}
+  .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+  h2.lets{font-family:var(--serif);font-weight:600;font-size:clamp(70px,13vw,150px);line-height:.86;letter-spacing:-.03em;margin:22px 0 30px}
+  h2.lets em{font-style:italic;font-weight:400}
+  .contact-lead{max-width:440px;font-size:17px;color:#3a352c}
+  .contact-col .eyebrow{display:block;margin-bottom:6px}
+  .contact-block{margin-bottom:30px}
+  .contact-block a,.contact-block .val{font-size:18px;font-weight:500}
+  .contact-block a{border-bottom:1px solid var(--line);transition:border-color .2s}
+  .contact-block a:hover{border-color:var(--accent);color:var(--accent)}
+  .link-list{display:flex;flex-direction:column;gap:9px}
+  .link-list a{font-size:16px;width:fit-content;border-bottom:1px solid var(--line)}
+  .link-list a:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+
+  footer{border-top:1px solid var(--line);padding:28px 0}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .foot-inner span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  #projects :focus-visible{outline-color:var(--glow)}
+
+  /* ---------- CUSTOM CIRCLE CURSOR ---------- */
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
+  .cursor-dot{width:6px;height:6px;background:#fff}
+  .cursor-ring{width:34px;height:34px;border:1.5px solid #fff;transition:width .2s,height .2s,background .2s,border-color .2s}
+  .cursor-ring.hovering{width:52px;height:52px;background:rgba(255,255,255,.12)}
+  @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+  @media(prefers-reduced-motion:reduce){.cursor-dot,.cursor-ring{display:none}}
+
+  /* ---------- RESPONSIVE REFINEMENTS ---------- */
+  @media(max-width:640px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .nav-inner{padding:14px 20px}
+    header{padding:60px 0 52px}
+    section{padding:60px 0}
+    .sec-head{margin-bottom:38px}
+    .hero-sub{font-size:17px;margin-bottom:34px}
+    .stats{gap:14px}
+    .stat{padding:16px 18px 16px 0;margin-right:0;border-right:none;border-bottom:1px solid var(--line);flex:1 1 40%}
+    .stat:nth-last-child(-n+1){border-bottom:none}
+    .about-grid p{font-size:17px}
+    .exp-role{font-size:21px}
+    .logo-badge{width:52px;height:52px}
+    .proj-cover{height:130px}
+    .cert{grid-template-columns:1fr;gap:4px}
+    .cert .c-date{margin-top:2px}
+    #contact{padding-top:56px}
+    .contact-block a,.contact-block .val{font-size:17px}
+  }
+  @media(max-width:400px){
+    .stat{flex:1 1 100%}
+    h1.hero{font-size:44px}
+  }
+</style>
+</head>
+<body>
+
+<a id="skip" href="#top" style="position:absolute;left:-9999px">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <b>Riddhi Patel</b>
+      <span>Software Engineer · AI/ML</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <span class="clock" id="clock">Fort Wayne · —</span>
+      <a class="nav-cta" href="#contact">Get in touch →</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<a id="top"></a>
+<header>
+  <div class="wrap">
+    <div class="hero-eyebrow reveal">
+      <span class="eyebrow">Purdue University Fort Wayne · CS '27</span>
+      <span class="rule"></span>
+    </div>
+    <h1 class="hero reveal">Building intelligent,<br /><em>user-focused</em> software.</h1>
+    <p class="hero-sub reveal">
+      I'm Riddhi — a Computer Science student and engineer working across
+      <b>full-stack development, AI/ML, and security automation</b>.
+      Currently a Software Engineer Intern at <b>Hadrian</b>, building AI-driven
+      vulnerability-management tooling for IT security &amp; infrastructure.
+    </p>
+    <div class="stats reveal">
+      <div class="stat"><div class="num">3.84</div><div class="lbl">GPA / 4.00</div></div>
+      <div class="stat"><div class="num">4+</div><div class="lbl">Internships &amp; research</div></div>
+      <div class="stat"><div class="num">May '27</div><div class="lbl">Expected graduation</div></div>
+      <div class="stat"><div class="num">960+</div><div class="lbl">LinkedIn followers</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">01 — About</span>
+        <h2 class="sec">Where the engineering meets real-world impact</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I build production-ready software that solves real problems — from an
+          <b>AI reasoning tool</b> that maps vulnerability scans to Infrastructure-as-Code,
+          to developer tooling that shaves hours off documentation cycles.</p>
+        <p>My work sits at the intersection of <b>AI/ML research</b> and <b>practical engineering</b>:
+          I care about deterministic guardrails, least-privilege design, and shipping features
+          that hold up under real usage. I move comfortably across Python, Java, Kotlin, and TypeScript.</p>
+        <p>Right now I'm focused on <b>agentic AI for security</b> at Hadrian and
+          <b>AI planning &amp; optimization research</b> at Purdue — and I'm always looking for
+          work that blends strong engineering with security-first thinking and measurable results.</p>
+      </div>
+      <div class="about-side reveal">
+        <div class="meta-row"><span class="k">Location</span><span class="v">Fort Wayne, IN</span></div>
+        <div class="meta-row"><span class="k">Focus</span><span class="v">Full-Stack · AI/ML · Security</span></div>
+        <div class="meta-row"><span class="k">Languages</span><span class="v">Python · Java · Kotlin · TS</span></div>
+        <div class="meta-row"><span class="k">Education</span><span class="v">Purdue Fort Wayne · NYIT</span></div>
+        <div class="meta-row"><span class="k">Status</span><span class="v">Open to roles &amp; internships</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">02 — Experience</span>
+        <h2 class="sec">Where the product thinking came from</h2>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="logo-badge">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="#0b1f3a"/><text x="30" y="37" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">H</text><text x="30" y="49" font-family="Arial, sans-serif" font-size="6.5" fill="#8fa3c8" text-anchor="middle" letter-spacing="1.5">HADRIAN</text></svg>
+        </div>
+        <div class="exp-date">Summer 2026 — Present</div>
+      </div>
+      <div>
+        <div class="exp-role">Software Engineer Intern, IT Security &amp; Infrastructure</div>
+        <div class="exp-co">Hadrian</div>
+        <ul class="exp-body">
+          <li>Building an AI-powered automated reasoning tool that bridges vulnerability scan data (Tenable) with Infrastructure-as-Code repositories on GitHub to identify and remediate unpatched infrastructure vulnerabilities.</li>
+          <li>Designing a multi-phase pipeline that normalizes findings across Kubernetes nodes, maps root-caused issues to source IaC, and simulates change "blast radius" before any pull requests are opened.</li>
+          <li>Scoping AI-use guardrails — deterministic logic where possible, least-privilege API access, domain allow-listing — with security engineering leadership.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="logo-badge">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="#ffffff"/><circle cx="30" cy="26" r="13" fill="#e03127"/><text x="30" y="31" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">J</text><text x="30" y="50" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#e03127" text-anchor="middle" letter-spacing="1">juvare</text></svg>
+        </div>
+        <div class="exp-date">May 2025 — Jul 2025</div>
+      </div>
+      <div>
+        <div class="exp-role">Full Stack Developer Intern</div>
+        <div class="exp-co">Juvare <span class="place">· Fort Wayne, IN</span></div>
+        <ul class="exp-body">
+          <li>Developed and enhanced a VS Code extension for WebEOC board building — implementing autocomplete for tags/attributes and reusable code snippets — improving developer productivity.</li>
+          <li>Automated deployment pipelines with GitLab CI/CD to sync VSIX releases with Confluence documentation, ensuring version-consistent delivery.</li>
+          <li>Built Confluence CLI workflows to automate parent/child page creation, attachment uploads, and HTML content integration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="logo-badge">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="#000000"/><text x="30" y="28" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#CEB888" text-anchor="middle">P</text><text x="30" y="45" font-family="Arial, sans-serif" font-size="6" fill="#CEB888" text-anchor="middle" letter-spacing="1">PURDUE</text></svg>
+        </div>
+        <div class="exp-date">Jan 2025 — Present</div>
+      </div>
+      <div>
+        <div class="exp-role">Undergraduate Research Assistant</div>
+        <div class="exp-co">Purdue University Fort Wayne <span class="place">· Fort Wayne, IN</span></div>
+        <ul class="exp-body">
+          <li>Developing prototype AI agents for planning, scheduling, and optimization using Python, TensorFlow, and PyTorch on real-world financial datasets.</li>
+          <li>Collaborating with a multidisciplinary team to apply AI search algorithms and continuous-learning techniques to improve decision-making systems.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="logo-badge">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="#ffffff"/><text x="30" y="30" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#232f3e" text-anchor="middle" letter-spacing="-.5">amazon</text><path d="M14 38 q16 10 32 0" stroke="#FF9900" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M44 36 l3 3 -4 1.5 z" fill="#FF9900"/></svg>
+        </div>
+        <div class="exp-date">May 2024 — Aug 2024</div>
+      </div>
+      <div>
+        <div class="exp-role">Sortation Center Associate</div>
+        <div class="exp-co">Amazon <span class="place">· Nashville, TN</span></div>
+        <ul class="exp-body">
+          <li>Streamlined workflows and optimized data handling, identifying bottlenecks and implementing operational efficiency improvements.</li>
+          <li>Applied agile principles across cross-functional teams to meet strict deadlines in a fast-paced environment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">03 — Education</span>
+        <h2 class="sec">Where I'm learning the fundamentals</h2>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="logo-badge">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="#000000"/><text x="30" y="28" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#CEB888" text-anchor="middle">P</text><text x="30" y="45" font-family="Arial, sans-serif" font-size="6" fill="#CEB888" text-anchor="middle" letter-spacing="1">PURDUE</text></svg>
+        </div>
+        <div class="exp-date">Expected May 2027</div>
+      </div>
+      <div>
+        <div class="exp-role">B.S. in Computer Science</div>
+        <div class="exp-co">Purdue University Fort Wayne <span class="place">· Fort Wayne, IN</span></div>
+        <ul class="exp-body">
+          <li>GPA 3.84 / 4.00 · Coursework across AI/ML, algorithms, systems, and software engineering.</li>
+          <li>Undergraduate research in AI agents for planning, scheduling, and optimization.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="logo-badge">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="#0033a0"/><text x="30" y="27" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">NYIT</text><text x="30" y="43" font-family="Arial, sans-serif" font-size="5.5" fill="#cdd8f0" text-anchor="middle" letter-spacing=".5">NEW YORK TECH</text></svg>
+        </div>
+        <div class="exp-date">Sep 2023 — May 2024</div>
+      </div>
+      <div>
+        <div class="exp-role">B.S. in Computer Science (transferred)</div>
+        <div class="exp-co">New York Institute of Technology <span class="place">· New York, NY</span></div>
+        <ul class="exp-body">
+          <li>GPA 3.97 / 4.00 · Foundational CS coursework before transferring to Purdue Fort Wayne.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (DARK BAND) -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">04 — Selected work</span>
+        <h2 class="sec">Software I'm proud of</h2>
+      </div>
+      <a class="gh-link" href="https://github.com/Riddhi0124" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        View GitHub →
+      </a>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj reveal">
+        <span class="reticle"></span>
+        <a class="proj-cover-link" href="https://riddhi0124.github.io/Build-Marble-Match-game-UI-and-gameplay/" target="_blank" rel="noopener">
+        <div class="proj-cover">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#2a1240"/><circle cx="90" cy="60" r="20" fill="#ff5c7c"/><circle cx="150" cy="95" r="16" fill="#4fd1c5"/><circle cx="215" cy="55" r="22" fill="#f6ad55"/><circle cx="280" cy="100" r="18" fill="#63b3ed"/><circle cx="330" cy="55" r="14" fill="#b794f4"/><circle cx="55" cy="110" r="12" fill="#68d391"/></svg>
+          <span class="proj-tag-cat">Game · Java</span>
+          <span class="proj-year">2025</span>
+        </div>
+        </a>
+        <div class="proj-body">
+          <h3>Marble Match Game</h3>
+          <p>A UI-driven marble matching game with interactive gameplay mechanics, scoring, and a responsive board layout.</p>
+          <div class="proj-tags"><span class="tag">Java</span><span class="tag">HTML</span><span class="tag">Game UI</span></div>
+          <div class="proj-links">
+            <a href="https://riddhi0124.github.io/Build-Marble-Match-game-UI-and-gameplay/" target="_blank" rel="noopener">Live demo ↗</a>
+            <a href="https://github.com/Riddhi0124/Build-Marble-Match-game-UI-and-gameplay" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <span class="reticle"></span>
+        <a class="proj-cover-link" href="https://github.com/Riddhi0124/Phishing-Email-Triage-Analyzer" target="_blank" rel="noopener">
+        <div class="proj-cover">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#12233a"/><rect x="130" y="45" width="140" height="90" rx="6" fill="#1b3557" stroke="#3b82c4" stroke-width="2"/><path d="M130 51 l70 45 l70 -45" fill="none" stroke="#5aa9e6" stroke-width="2.5"/><circle cx="285" cy="52" r="17" fill="#ff5c5c"/><path d="M278 46 l14 14 M292 46 l-14 14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <span class="proj-tag-cat">Security</span>
+          <span class="proj-year">2025</span>
+        </div>
+        </a>
+        <div class="proj-body">
+          <h3>Phishing Email Triage Analyzer</h3>
+          <p>Parses raw email headers, validates SPF/DKIM/DMARC, and extracts indicators of compromise. Heuristic risk-scoring generates structured SOC-style reports.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">SPF/DKIM</span><span class="tag">SOC</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/Riddhi0124/Phishing-Email-Triage-Analyzer" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <span class="reticle"></span>
+        <a class="proj-cover-link" href="https://github.com/Riddhi0124/Face-Recognition-and-Attendance-Project" target="_blank" rel="noopener">
+        <div class="proj-cover">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#0f2e2b"/><rect x="150" y="30" width="100" height="100" rx="10" fill="none" stroke="#34d399" stroke-width="2.5"/><circle cx="200" cy="70" r="24" fill="none" stroke="#6ee7b7" stroke-width="2"/><path d="M172 118 q28 -26 56 0" fill="none" stroke="#6ee7b7" stroke-width="2"/><path d="M150 30 v-8 h16 M234 30 h16 v8 M150 130 h16 M234 130 h16" stroke="#34d399" stroke-width="2.5" fill="none"/></svg>
+          <span class="proj-tag-cat">Computer Vision</span>
+          <span class="proj-year">2024</span>
+        </div>
+        </a>
+        <div class="proj-body">
+          <h3>Face Recognition Attendance</h3>
+          <p>Real-time facial-recognition attendance system integrating Python's OpenCV with a Java-based UI — automating attendance and eliminating paper tracking.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Java</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/Riddhi0124/Face-Recognition-and-Attendance-Project" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <span class="reticle"></span>
+        <a class="proj-cover-link" href="https://github.com/Riddhi0124/Explore-near-me" target="_blank" rel="noopener">
+        <div class="proj-cover">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#1a2e1f"/><path d="M0 110 q100 -30 200 -10 t200 -5" fill="none" stroke="#4ade80" stroke-width="1.5" opacity=".4"/><path d="M0 90 q120 20 200 -5 t200 10" fill="none" stroke="#4ade80" stroke-width="1.5" opacity=".4"/><path d="M200 40 c-18 0 -30 13 -30 30 0 22 30 48 30 48 s30 -26 30 -48 c0 -17 -12 -30 -30 -30z" fill="#f97316"/><circle cx="200" cy="70" r="11" fill="#fff"/></svg>
+          <span class="proj-tag-cat">Mobile · Android</span>
+          <span class="proj-year">2024</span>
+        </div>
+        </a>
+        <div class="proj-body">
+          <h3>Explore Near Me</h3>
+          <p>GPS-enabled Android app built with Kotlin and the Google Maps API for discovering nearby restaurants, parks, and activities — with real-time data via Retrofit.</p>
+          <div class="proj-tags"><span class="tag">Kotlin</span><span class="tag">Maps API</span><span class="tag">Retrofit</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/Riddhi0124/Explore-near-me" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <span class="reticle"></span>
+        <a class="proj-cover-link" href="https://github.com/Riddhi0124/sorting-algorithm-visualizer" target="_blank" rel="noopener">
+        <div class="proj-cover">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#241a3a"/><g fill="#a78bfa"><rect x="120" y="90" width="16" height="45"/><rect x="145" y="65" width="16" height="70"/><rect x="170" y="105" width="16" height="30"/><rect x="195" y="45" width="16" height="90"/><rect x="220" y="78" width="16" height="57"/><rect x="245" y="30" width="16" height="105"/><rect x="270" y="60" width="16" height="75"/></g></svg>
+          <span class="proj-tag-cat">Algorithms</span>
+          <span class="proj-year">2024</span>
+        </div>
+        </a>
+        <div class="proj-body">
+          <h3>Sorting Algorithm Visualizer</h3>
+          <p>Interactive visualizer that animates classic sorting algorithms step-by-step — a study aid for understanding time complexity and comparison behavior.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">Algorithms</span><span class="tag">Viz</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/Riddhi0124/sorting-algorithm-visualizer" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <span class="reticle"></span>
+        <a class="proj-cover-link" href="https://github.com/Riddhi0124/File-Sharing-System" target="_blank" rel="noopener">
+        <div class="proj-cover">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#1a1f3a"/><rect x="165" y="55" width="70" height="55" rx="6" fill="#3b4a8f"/><path d="M180 55 v-8 a10 10 0 0 1 40 0 v8" fill="none" stroke="#7c8fe0" stroke-width="4"/><circle cx="200" cy="80" r="7" fill="#c7d2fe"/><rect x="196" y="84" width="8" height="14" fill="#c7d2fe"/></svg>
+          <span class="proj-tag-cat">Full-Stack</span>
+          <span class="proj-year">2025</span>
+        </div>
+        </a>
+        <div class="proj-body">
+          <h3>Secure File Sharing System</h3>
+          <p>Full-stack file-sharing platform with authentication, private links, and controlled file access — built around secure, permissioned delivery.</p>
+          <div class="proj-tags"><span class="tag">Full-Stack</span><span class="tag">Auth</span><span class="tag">Security</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/Riddhi0124/File-Sharing-System" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">05 — Toolkit</span>
+        <h2 class="sec">What I build with</h2>
+      </div>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <h4>Languages</h4>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">Kotlin</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>AI / ML</h4>
+        <div class="chips"><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">OpenCV</span><span class="chip">AI Agents / LLM Reasoning</span><span class="chip">Machine Learning</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>Web &amp; Mobile</h4>
+        <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Retrofit</span><span class="chip">Android</span><span class="chip">Swing</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>Security &amp; Infra</h4>
+        <div class="chips"><span class="chip">Vulnerability Mgmt</span><span class="chip">Tenable</span><span class="chip">Kubernetes</span><span class="chip">IaC</span><span class="chip">Security Automation</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>Tools &amp; DevOps</h4>
+        <div class="chips"><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">GitLab CI/CD</span><span class="chip">VS Code</span><span class="chip">Android Studio</span><span class="chip">Confluence</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>Databases &amp; Concepts</h4>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">REST APIs</span><span class="chip">OOP</span><span class="chip">Unit Testing</span><span class="chip">Agile / SDLC</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">06 — Credentials</span>
+        <h2 class="sec">Certifications</h2>
+      </div>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert">
+        <div><div class="c-name">Introduction to Kubernetes (LFS158)</div><div class="c-org">The Linux Foundation</div></div>
+        <div class="c-date">Jul 2026</div>
+      </div>
+      <div class="cert">
+        <div><div class="c-name">GitLab CI Fundamentals</div><div class="c-org">GitLab · CI/CD, automation, deployment</div></div>
+        <div class="c-date">Jun 2025</div>
+      </div>
+      <div class="cert">
+        <div><div class="c-name">TypeScript for Professionals</div><div class="c-org">Udemy</div></div>
+        <div class="c-date">Jun 2025</div>
+      </div>
+      <div class="cert">
+        <div><div class="c-name">Professional JavaScript (Beginner → Advanced)</div><div class="c-org">Udemy</div></div>
+        <div class="c-date">Jun 2025</div>
+      </div>
+      <div class="cert">
+        <div><div class="c-name">Software Engineering Job Simulation</div><div class="c-org">J.P. Morgan · via Forage</div></div>
+        <div class="c-date">Sep 2024</div>
+      </div>
+      <div class="cert">
+        <div><div class="c-name">Cybersecurity Job Simulation</div><div class="c-org">JPMorgan Chase · via Forage</div></div>
+        <div class="c-date">Sep 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>LET'S BUILD SOMETHING GREAT&nbsp;<span class="dot">✦</span></span>
+    <span>LET'S BUILD SOMETHING GREAT&nbsp;<span class="dot">✦</span></span>
+    <span>LET'S BUILD SOMETHING GREAT&nbsp;<span class="dot">✦</span></span>
+    <span>LET'S BUILD SOMETHING GREAT&nbsp;<span class="dot">✦</span></span>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="border-top:none">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Start a conversation?</span>
+        <h2 class="lets">Let's<br /><em>Talk.</em></h2>
+        <p class="contact-lead">Open to internships and full-time roles — especially work that blends strong engineering, security-first thinking, and measurable impact.</p>
+      </div>
+      <div class="contact-col reveal">
+        <div class="contact-block">
+          <span class="eyebrow">Email</span>
+          <a href="mailto:riddhip0103@gmail.com">riddhip0103@gmail.com</a>
+        </div>
+        <div class="contact-block">
+          <span class="eyebrow">Location</span>
+          <div class="val">Fort Wayne, IN · Open to relocation</div>
+        </div>
+        <div class="contact-block">
+          <span class="eyebrow">Links</span>
+          <div class="link-list">
+            <a href="https://www.linkedin.com/in/riddhi-patel-068428327" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://github.com/Riddhi0124" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Riddhi Patel</span>
+    <span>Designed &amp; built by Riddhi</span>
+  </div>
+</footer>
+
+<script>
+  // mobile menu toggle
+  (function(){
+    const btn=document.getElementById('menuBtn'), links=document.getElementById('navLinks');
+    if(btn&&links){
+      const close=()=>{links.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');};
+      btn.addEventListener('click',()=>{
+        const open=links.classList.toggle('open');
+        btn.classList.toggle('open',open);
+        btn.setAttribute('aria-expanded',open);
+      });
+      links.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+    }
+  })();
+
+  function tick(){
+    try{
+      const t = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'America/Indiana/Indianapolis'});
+      document.getElementById('clock').textContent = 'Fort Wayne · ' + t + ' EST';
+    }catch(e){}
+  }
+  tick(); setInterval(tick,1000*30);
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // cursor-following spotlight glow on project cards
+  document.querySelectorAll('.proj').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+
+  // custom circular cursor (fine pointers only)
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches
+     && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const dot=document.createElement('div'); dot.className='cursor-dot';
+    const ring=document.createElement('div'); ring.className='cursor-ring';
+    document.body.append(dot,ring);
+    let rx=0,ry=0,tx=0,ty=0;
+    document.addEventListener('pointermove',e=>{
+      tx=e.clientX; ty=e.clientY;
+      dot.style.left=tx+'px'; dot.style.top=ty+'px';
+    });
+    (function loop(){
+      rx+=(tx-rx)*0.18; ry+=(ty-ry)*0.18;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    })();
+    const hoverSel='a,button,.proj,.chip,.nav-cta,.gh-link';
+    document.querySelectorAll(hoverSel).forEach(el=>{
+      el.addEventListener('pointerenter',()=>ring.classList.add('hovering'));
+      el.addEventListener('pointerleave',()=>ring.classList.remove('hovering'));
+    });
+  }
+</script>
+</body>
+</html>
